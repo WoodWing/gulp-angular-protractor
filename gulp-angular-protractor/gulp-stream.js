@@ -61,7 +61,7 @@ module.exports = function (options, webDriverUrl) {
                     gutil.log(PLUGIN_NAME + ' - We will run the Protractor engine');
 
                     var child = webDriver
-                        .runProtractor(args)
+                        .runProtractor(args, options.binary, options.binaryArgs)
                         .on('exit', function(code) {
                             if (child) {
                                 child.kill();

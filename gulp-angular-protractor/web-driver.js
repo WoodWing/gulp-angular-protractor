@@ -24,17 +24,17 @@ var
     // Constants
     PLUGIN_NAME = require('./constants.json').PLUGIN_NAME,
     IS_WINDOWS = /^win/.test(process.platform),
-    WIN_COMMAND_EXTENSION = IS_WINDOWS ? '.cmd': '',
+    COMMAND_EXTENSION = IS_WINDOWS ? '.cmd': '',
     COMMAND_RELATIVE_PATH = IS_WINDOWS ? '' : './',
 
     PROTRACTOR_DIR = gprotractor.getProtractorDir(),
-    PROTRACTOR_COMMAND = 'protractor' + WIN_COMMAND_EXTENSION,
+    PROTRACTOR_COMMAND = 'protractor',
 
     WEB_DRIVER_LOG_STARTED = 'Started org.openqa.jetty.jetty.Server',
     WEB_DRIVER_LOG_STARTED_NEW = 'Selenium Server is up and running',
     WEB_DRIVER_LOG_STOPPED = 'Command request: shutDownSeleniumServer',
     WEB_DRIVER_SHUTDOWN_PATH = '/selenium-server/driver/?cmd=shutDownSeleniumServer',
-    WEB_DRIVER_COMMAND = 'webdriver-manager' + WIN_COMMAND_EXTENSION,
+    WEB_DRIVER_COMMAND = 'webdriver-manager' + COMMAND_EXTENSION,
     WEB_DRIVER_START_COMMAND = 'start';
 
 module.exports = {
@@ -74,12 +74,15 @@ module.exports = {
      * @param {string[]} args
      * @returns {Object}
      */
-    'runProtractor': function (args) {
-        return childProcess.spawn(COMMAND_RELATIVE_PATH + PROTRACTOR_COMMAND, args, {
-            'stdio': 'inherit',
-            'env': process.env,
-            'cwd': PROTRACTOR_DIR
-        });
+    'runProtractor': function (args, binary, binaryArgs) {
+        var allArgs = (binaryArgs || []).concat(args);
+        return childProcess.spawn(binary ? binary : COMMAND_RELATIVE_PATH + PROTRACTOR_COMMAND + COMMAND_EXTENSION,
+            allArgs,
+            {
+                'stdio': 'inherit',
+                'env': process.env,
+                'cwd': PROTRACTOR_DIR
+            });
     },
 
     /**
