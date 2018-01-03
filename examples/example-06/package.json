@@ -7,10 +7,9 @@
     "test": "npm run gulp protractor"
   },
   "devDependencies": {
-    "gulp": "latest",
+    "gulp": "3.9.1",
     "gulp-angular-protractor": "latest",
-    "jasmine-reporters": "2.2.0",
-    "protractor": "4.0.11",
-    "webdriver-manager": "10.2.8"
+    "protractor": "5.1.2",
+    "webdriver-manager": "12.0.6"
   }
 }

@@ -13,11 +13,7 @@ gulp.task('protractor', function(callback) {
         .pipe(gulpProtractorAngular({
             'configFile': 'protractor.conf.js',
             'debug': false,
-            'autoStartStopServer': true,
-            'verbose': false,
-            'webDriverUpdate': {
-                'browsers': ['ie', 'chrome']
-            }
+            'autoStartStopServer': true
         }))
         .on('error', function(e) {
             console.log(e);
