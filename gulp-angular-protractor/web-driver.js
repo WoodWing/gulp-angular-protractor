@@ -61,7 +61,6 @@ module.exports = function (protractorModulePath) {
     	            'cwd': protractorDirToUse
 	            });
         },
-        },
 
         /**
          * Execute the protractor engine
