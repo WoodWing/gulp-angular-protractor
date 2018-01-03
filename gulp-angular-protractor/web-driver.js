@@ -47,6 +47,8 @@ module.exports = function (protractorModulePath) {
          * @method
          * @static
          * @param {string[]} args
+         * @param {string} binary
+         * @param {string[]} binaryArgs
          * @returns {Object}
          */
         'runProtractor': function (args, binary, binaryArgs) {
@@ -67,11 +69,13 @@ module.exports = function (protractorModulePath) {
          * @method
          * @static
          * @param {string[]} args
+         * @param {string} binary
+         * @param {string[]} binaryArgs
          * @param {Function} callback
          */
-        'runProtractorAndWait': function (args, callback) {
+        'runProtractorAndWait': function (args, binary, binaryArgs, callback) {
             let child = this
-                .runProtractor(args)
+                .runProtractor(args, binary, binaryArgs)
                 .on('exit', function (code) {
                     if (child) {
                         child.kill();

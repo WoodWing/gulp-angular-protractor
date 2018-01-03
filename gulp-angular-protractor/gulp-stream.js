@@ -83,7 +83,7 @@ module.exports = function (options, webDriverUrl, autoStartServer, webDriver) {
                     }
                 } else {
                     // Just run protractor
-                    webDriver.runProtractorAndWait(args, (code) => {
+                    webDriver.runProtractorAndWait(args, options.binary, options.binaryArgs, (code) => {
                         if (this) finalize(this, code);
                     });
                 }
