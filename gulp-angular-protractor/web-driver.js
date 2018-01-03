@@ -52,8 +52,8 @@ module.exports = function (protractorModulePath) {
          * @returns {Object}
          */
         'runProtractor': function (args, binary, binaryArgs) {
-        	var allArgs = (binaryArgs || []).concat(args);
-        	return childProcess.spawn(binary ? binary : COMMAND_RELATIVE_PATH + PROTRACTOR_COMMAND + COMMAND_EXTENSION,
+            var allArgs = (binaryArgs || []).concat(args);
+            return childProcess.spawn(binary ? binary : COMMAND_RELATIVE_PATH + PROTRACTOR_COMMAND,
             	allArgs,
             	{
                 	'stdio': 'inherit',
